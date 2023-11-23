@@ -1,0 +1,39 @@
+<script>
+ 
+    // Get all radio buttons with class 'input-btns' and name 'Color'
+    var colorRadioButtons = document.querySelectorAll('.input-btns[name="Color"]');
+
+    // Loop through each radio button
+    colorRadioButtons.forEach(function (radioButton) {
+      // Get the label associated with the radio button
+      var label = document.querySelector('label[for="' + radioButton.id + '"]');
+
+      // Set the height and width of the label to 50px
+      if (label) {
+        label.style.height = '50px';
+        label.style.width = '50px';
+label.style.borderRadius ="100%";
+        
+        // Set the background color of the label to the value of the radio button
+        label.style.backgroundColor = radioButton.value;
+
+        // Remove the inner HTML content of the label
+        label.innerHTML = '';
+
+        // Add a click event listener to each radio button
+        radioButton.addEventListener('click', function () {
+          // Remove the border from all labels
+          colorRadioButtons.forEach(function (btn) {
+            var btnLabel = document.querySelector('label[for="' + btn.id + '"]');
+            if (btnLabel) {
+              btnLabel.style.border = '1px solid black';
+            }
+          });
+
+          // Add a border to the clicked label
+          label.style.border = '3px solid black';
+        });
+      }
+    });
+
+</script>
